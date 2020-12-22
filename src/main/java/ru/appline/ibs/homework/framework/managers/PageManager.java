@@ -1,7 +1,11 @@
 package ru.appline.ibs.homework.framework.managers;
 
+import ru.appline.ibs.homework.framework.pages.BasePage;
 import ru.appline.ibs.homework.framework.pages.DepositsPage;
 import ru.appline.ibs.homework.framework.pages.StartPage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Менеджер страниц
@@ -9,6 +13,8 @@ import ru.appline.ibs.homework.framework.pages.StartPage;
 public class PageManager {
 
     private static PageManager pageManager;
+
+    private static List<BasePage> pageList = new ArrayList<>();
 
     StartPage startPage;
     DepositsPage depositsPage;
@@ -41,6 +47,7 @@ public class PageManager {
 
         if (startPage == null) {
             startPage = new StartPage();
+            pageList.add(startPage);
         }
         return startPage;
 
@@ -54,8 +61,18 @@ public class PageManager {
 
         if (depositsPage == null) {
             depositsPage = new DepositsPage();
+            pageList.add(depositsPage);
         }
         return depositsPage;
+
+    }
+
+    static void cleanPages() {
+
+        for (BasePage pages: pageList) {
+            pages = null;
+        }
+        pageList.clear();
 
     }
 

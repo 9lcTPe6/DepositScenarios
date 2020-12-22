@@ -4,6 +4,7 @@ import ru.appline.ibs.homework.framework.utils.PropertyVars;
 
 import java.util.concurrent.TimeUnit;
 
+import static ru.appline.ibs.homework.framework.managers.PageManager.cleanPages;
 import static ru.appline.ibs.homework.framework.managers.WebDriverManager.*;
 import static ru.appline.ibs.homework.framework.utils.PropertyVars.*;
 
@@ -36,6 +37,7 @@ public class FrameworkLaunchManager {
      */
     public static void stopFramework() {
 
+        cleanPages();
         turnOff();
 
     }
